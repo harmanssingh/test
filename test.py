@@ -10,24 +10,24 @@
 ###############################################################################
 # Write f01 that prints "Hello World!" and calls f02. (three lines)
 def f01():
-
+    print("Hello World")
     f02()
 
 
 ###############################################################################
 # Write f02 that sets the variables x, y, and z equal to the words
 # necessary to have the f03 print "i love python!" (five lines)
-
-
-
-
+def f02():
+    x="I"
+    y="Love"
+    z="Python"
     f03(x, y, z)  # Last line in f2()
 
 
 ###############################################################################
 # Finish f03 (replace the ????).
 def f03(*words):
-    truth = " ".????(words)  # This is broken.
+    truth = " ".join(words)  # This is broken.
     truth_emphasized = truth + "!"
     print(truth_emphasized)
     f04(truth)  # Last line in f03()
@@ -37,7 +37,7 @@ def f03(*words):
 # Write f04 that prints truth backwards (edit one line only)
 # Ex. f4("Littlest Bear") prints "raeB tselttiL"
 def f04(string):
-
+    print(string[::-1])
     f05(string)  # Last line in f04()
 
 
@@ -51,11 +51,10 @@ def f04(string):
 #   Info
 #    Info
 def f05(word):
-
-
-
-
-
+    indent=''
+    for n in range(len(word)):
+        indent+=' '
+        print(indent+word)
     f06("South Hall", "Python Rocks!")  # Last line in f05()
 
 
@@ -71,13 +70,8 @@ def f05(word):
 # 'longer_string' is longer than 'short_string' by 1 chars
 # 'short_string' has only 92.31% the number of chars of longer_string
 def f06(string1, string2):
-
-
-
-
-
-
-
+    print('{} is longer than {} by {} chars'.format(repr(string1),repr(string2),str(len(string1)-len(string2))))
+    print('{} has only {}% the number of chas of {}'.format(repr(string1),str(len(string1)/len(string2)*100),repr(string2)))
     various_solutions()  # Last line in f06()
 
 
@@ -113,22 +107,28 @@ def various_solutions():
 
 ###############################################################################
 def f07():
-    ...
+    sum1 = 0
+    num = 0
+    while num <= 500:
+        if num % 3 == 0 or num % 5 == 0:
+            sum1+=num
+        num+=1
+    return sum1
 
 
 ###############################################################################
-def f08():
-    ...
 
-
-###############################################################################
-def f09():
-    ...
 
 
 ###############################################################################
-def f10():
-    ...
+def f10(n):
+        if n > 0:
+            if (n % 3 == 0 or n % 5 == 0):
+                return n + f10(n-1)
+            else:
+                return f10(n-1)
+        else:
+            return 0
 
 
 ###############################################################################
@@ -136,7 +136,12 @@ def f10():
 # strings, integers if they started as floats, and as the value 0 if they
 # started as ints.
 def f11(args):
-    ...
+    if type(args) is str:
+        print(float(args))
+    elif type(args) is float:
+        print(int(args))
+    elif type(args) is int:
+        print(0)
 
 
 ###############################################################################
@@ -152,8 +157,19 @@ def f11(args):
 # Ex. printing
 #   [1.0, 1.3, 2.443]
 def f12():
-    ...
-
+    list1=[]
+    while True:
+        inp=input("Enter an input: ")
+        if inp == 'done':
+            break
+        else:
+            try:
+                inp=float(inp)
+            except:
+                with open("log_file.txt",'w') as f:
+                    f.write(inp)
+            list1.append(inp)
+    print(list1)
 
 
 
@@ -252,7 +268,7 @@ def f18(list_):
 # would be even), otherwise change the value to the ascii number for the last
 # char in the word. Print the new dictionary.
 def f19(d):
-    
+
 
 
 
@@ -332,5 +348,3 @@ def main():
 
 
 # Write the boilerplate code. (two lines, plus empty line at end)
-
-
